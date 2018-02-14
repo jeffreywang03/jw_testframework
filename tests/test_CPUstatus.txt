@@ -1,0 +1,43 @@
+Verify baseboard of the system is powered on:
+VALUE = TRUE
+wmic baseboard get poweredon
+
+Verify CPU utilization does not exceed 50%:
+VALUE < 50
+wmic cpu get loadpercentage
+
+
+Verify CPU max clock speed is accurate:
+VALUE = 3200
+wmic cpu get maxclockspeed
+
+
+Verify Status of CPU system:
+VALUE = OK
+wmic cpu get status
+
+verify no issues with CPU load order of various software/hardware components
+Verify all OK (if VALUE =! OK)
+wmic loadorder get status
+
+Verify Status of memcache on the system:
+VALUE = OK
+VALUE = OK
+VALUE = OK
+wmic memcache get status
+
+Verify Status of netclient on the system:
+VALUE = OK
+wmic netclient get status
+
+Verify IP address of PC is recorded correctly:
+--last index of query == ipconfig (ethernet adapter)
+wmic nicconfig get IPAddress
+
+Verify status of the OS on the system:
+VALUE = OK
+wmic os get status
+
+Verify There is sufficient memory in the system: 
+VALUE > 0
+wmic os get freevirtualmemory//wmic os get freephysical memory
