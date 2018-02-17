@@ -14,7 +14,7 @@
 ################################################################################
 
 #Python imports
-
+import logging
 
 
 ##################################################
@@ -35,8 +35,20 @@ class TestController(object):
     # Return:  PASS or FAIL or NotTested
     #
     #*******************************************************
-    def fnTestBool(self, testcase):
+    def fnTestBool(self,TCID,testcase):
+        """
         if testcase:
             print "TEST INFO     Test Pass"
         else:
             print "TEST INFO     Test FAIL"        
+        """
+        logging.basicConfig(
+            format='%(asctime)s %(levelname)-8s %(message)s',
+            level=logging.INFO,
+            datefmt='%Y-%m-%d %H:%M:%S')
+        logging.info("Testing Test Case: %s" % TCID)
+        if testcase:
+            return logging.info("Test Pass")
+        else:
+            return logging.error("Test FAIL")
+       
