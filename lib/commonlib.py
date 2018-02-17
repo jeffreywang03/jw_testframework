@@ -16,6 +16,7 @@
 #Python imports
 import json
 import time
+import logging
 
 ##################################################
 #
@@ -35,15 +36,14 @@ class CommonLib:
     # Return:  log output
     #
     #*******************************************************
+    
     def logger(self,output):
-    	header = "LOG INFO      "
-    	if type(output) == float or type(output) == int:
-    		_output = str(output)
-    		print header + _output
-    	else:
-    		print header + output
-    	#logger timer
-    	time.sleep(0.25)
+        logging.basicConfig(
+            format='%(asctime)s %(levelname)-8s %(message)s',
+            level=logging.INFO,
+            datefmt='%Y-%m-%d %H:%M:%S')
+        time.sleep(0.75)
+        return logging.info(output)
 
     #*******************************************************
     #
@@ -54,22 +54,4 @@ class CommonLib:
     # Return:  log output
     #
     #*******************************************************
-    def logger(self,output):
-        header = "LOG INFO      "
-        if type(output) == float or type(output) == int:
-            _output = str(output)
-            print(header + _output)
-        else:
-            print(header + output)
-        #logger timer
-        time.sleep(0.25)
 
-    #*******************************************************
-    #
-    # Function: logger
-    #
-    # Description: Custom logging function
-    #
-    # Return:  log output
-    #
-    #*******************************************************
